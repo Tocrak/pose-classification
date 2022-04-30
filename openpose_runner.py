@@ -25,13 +25,13 @@ except ImportError as e:
 
 class OpenposeRunner:
     def __init__(self, model_folder="./models/", display=False):
+        self.op_wrapper = op.WrapperPython()
         self.params = dict()
-        self.params["model_folder"] = "./models/"
+        self.params["model_folder"] = model_folder
         self.display = display
         self.keypoints = list()
 
     def start_openpose(self):
-        self.op_wrapper = op.WrapperPython()
         self.op_wrapper.configure(self.params)
         self.op_wrapper.start()
 
