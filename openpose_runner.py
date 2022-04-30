@@ -24,11 +24,10 @@ class OpenposeRunner:
     def __init__(self, model_folder="./models/", display=False):
         self.op_wrapper = op.WrapperPython()
         # self.params can include any standard openpose parameter (e.g. net_resolution, fps_max, number_people_max)
-        self.params = dict()
-        self.params["model_folder"] = model_folder
+        self.params = {"model_folder": model_folder}
         # Display processed image
         self.display = display
-        self.keypoints = list()
+        self.keypoints = []
 
     def start_openpose(self):
         self.op_wrapper.configure(self.params)
@@ -53,7 +52,7 @@ class OpenposeRunner:
         return op.get_images_on_directory(image_dir)
 
     def run(self, image_dir="./media/", image_path=None):
-        self.keypoints = list()
+        self.keypoints = []
         self.start_openpose()
 
         if image_path:
