@@ -41,7 +41,7 @@ class OpenposeRunner:
             image_to_process = cv2.imread(imagePath)
             datum.cvInputData = image_to_process
             self.op_wrapper.emplaceAndPop(op.VectorDatum([datum]))
-            self.keypoints.append(datum.poseKeypoints)
+            self.keypoints.extend(datum.poseKeypoints)
 
             if self.display:
                 self.display_images(datum)
@@ -53,6 +53,7 @@ class OpenposeRunner:
         return op.get_images_on_directory(image_dir)
 
     def run(self, image_dir="./media/", image_path=None):
+        self.keypoints = list()
         self.start_openpose()
 
         if image_path:
