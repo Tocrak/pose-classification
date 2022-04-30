@@ -3,6 +3,7 @@ import cv2
 import os
 from sys import platform
 
+# Import the OpenPose module / binaries
 dir_path = os.path.dirname(os.path.realpath(__file__))
 try:
     # Windows Import
@@ -12,10 +13,6 @@ try:
         import pyopenpose as op
     else:
         sys.path.append('/bin')
-        # If you run `make install` (default path is `/usr/local/python` for Ubuntu),
-        # you can also access the OpenPose/python module from there. This will install OpenPose and the python
-        # library at your desired installation path. Ensure that this is in your python path in order to use it.
-        # sys.path.append('/usr/local/python')
         from openpose_example import pyopenpose as op
 except ImportError as e:
     print(
@@ -26,8 +23,10 @@ except ImportError as e:
 class OpenposeRunner:
     def __init__(self, model_folder="./models/", display=False):
         self.op_wrapper = op.WrapperPython()
+        # self.params can include any standard openpose parameter (e.g. net_resolution, fps_max, number_people_max)
         self.params = dict()
         self.params["model_folder"] = model_folder
+        # Display processed image
         self.display = display
         self.keypoints = list()
 
