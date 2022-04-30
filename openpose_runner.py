@@ -48,6 +48,7 @@ class OpenposeRunner:
 
     def display_images(self, datum):
         cv2.imshow("OpenPose 1.7.0 - Detect Keypoints", datum.cvOutputData)
+        cv2.waitKey(0)
 
     def get_image_paths(self, image_dir):
         return op.get_images_on_directory(image_dir)
