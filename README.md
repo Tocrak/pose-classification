@@ -8,4 +8,9 @@ or downloaded from [here](https://drive.google.com/file/d/1fX5Qw3IA93OovFMhNEPR9
 
 Both should be placed in bin/ and models/ folders inside the project folder. 
 
+## Usage
 
+Run the pose_classification.py script via an IDE  or command-line.
+The script requires paths to image directories as command-line arguments.
+
+(e.g. python pose_classification.py --image-dirs ./media/static_images ./media/dynamic_images)
